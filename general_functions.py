@@ -27,6 +27,13 @@ def set_password():
 """Wizard form functions"""
 
 
+def wizard_form_store_name():
+    store_name = input("Enter your store name: ")
+    with open("storename.txt", mode="w") as text_file:
+        text_file.write(str(store_name))
+    clear_screen()
+
+
 def wizard_form_password():
     print("Do you want to set an adminstration password?\n")
     _ = input("Y/N? ")
@@ -39,19 +46,17 @@ def wizard_form_password():
         if "y" in _:
             password = str(input("Please enter your password: "))
             password_text_file(password)
+            clear_screen()
         elif "Y" in _:
             password = str(input("Please enter your password: "))
             password_text_file(password)
+            clear_screen()
         elif "n" in _:
             clear_screen()
         elif "N" in _:
             clear_screen()
     except Exception as e:
         print("Error occurred:", e)
-
-
-def wizard_form_store_name():
-    print()
 
 
 def wizard_form_three():

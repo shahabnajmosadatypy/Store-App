@@ -1,5 +1,5 @@
 """ SQLite3 Custom
-This file allows the program to create, modify, delete and etc on Database
+This script allows to check if a Database exists
 Based on sqlite3 with using import sqlite3
 """
 
@@ -42,24 +42,3 @@ def check_if_database_exists():
         return False
     elif len(results) != 0:
         return True
-
-
-""""""
-
-
-def create_database():
-    con = sqlite3.Connection("database.db")
-    con.commit()
-    con.close()
-
-
-"""Loading Databases function and returning table row values"""
-
-
-def load_rows_from_database():
-    con = sqlite3.Connection("database.db")
-    cur = con.cursor()
-    rows = cur.fetchall()
-    con.commit()
-    con.close()
-    return rows

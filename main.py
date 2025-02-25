@@ -1,10 +1,10 @@
-import sqlite3_functions
+import database_functions
 import general_functions
 
 while True:
     status = True
     try:
-        if sqlite3_functions.check_if_database_exists():
+        if database_functions.check_if_database_exists():
             status = True
         else:
             status = False
@@ -21,16 +21,11 @@ while True:
         )
         wizard_var = input("Yes/No? ")
         try:
-            if "y" in wizard_var:
+            if "y" in wizard_var.lower():
                 general_functions.clear_screen()
                 general_functions.wizard_form_password()
-            elif "Y" in wizard_var:
-                general_functions.clear_screen()
-                general_functions.wizard_form_password()
-            elif "n" in wizard_var:
-                general_functions.clear_screen()
-                break
-            elif "N" in wizard_var:
+                general_functions.wizard_form_store_name()
+            elif "n" in wizard_var.lower():
                 general_functions.clear_screen()
                 break
         except Exception as e:
