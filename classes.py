@@ -1,6 +1,4 @@
-import sqlite3
 import random
-import os
 
 ##check db exists
 ##def db
