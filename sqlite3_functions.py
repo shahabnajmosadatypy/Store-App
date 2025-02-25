@@ -48,8 +48,9 @@ def check_if_database_exists():
 """"""
 
 
-def load_database():
+def create_database():
     pass
 
 
-print(str(check_if_database_exists()))
+def load_database():
+    pass
