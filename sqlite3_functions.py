@@ -4,13 +4,12 @@ Based on sqlite3 with using import sqlite3
 """
 
 import sqlite3
-import os
 import glob
 
 
 def check_if_database_exists():
     """
-    # name = "shahab.db"
+    # name = "*.db"
     # path = os.getcwd()
     # print(path)
     # results = []
@@ -49,8 +48,18 @@ def check_if_database_exists():
 
 
 def create_database():
-    pass
+    con = sqlite3.Connection("database.db")
+    con.commit()
+    con.close()
 
 
-def load_database():
-    pass
+"""Loading Databases function and returning table row values"""
+
+
+def load_rows_from_database():
+    con = sqlite3.Connection("database.db")
+    cur = con.cursor()
+    rows = cur.fetchall()
+    con.commit()
+    con.close()
+    return rows

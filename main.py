@@ -1,4 +1,5 @@
 import sqlite3_functions
+import general_functions
 
 while True:
     status = True
@@ -18,16 +19,20 @@ while True:
             "If you are admin, Do you want to run a wizard?\n",
             "If you are not admin program will be closed",
         )
-        wizard = input("Yes/No? ")
+        wizard_var = input("Yes/No? ")
         try:
-            if "y" in wizard:
-                pass
-            elif "n" in wizard:
-                pass
-            elif "Y" in wizard:
-                pass
-            elif "N" in wizard:
-                pass
+            if "y" in wizard_var:
+                general_functions.clear_screen()
+                general_functions.wizard_form_password()
+            elif "Y" in wizard_var:
+                general_functions.clear_screen()
+                general_functions.wizard_form_password()
+            elif "n" in wizard_var:
+                general_functions.clear_screen()
+                break
+            elif "N" in wizard_var:
+                general_functions.clear_screen()
+                break
         except Exception as e:
             print("Error occurred:", e)
         break
