@@ -39,7 +39,17 @@ def check_if_database_exists():
         results.append(file)
 
     """Calling back the results of search"""
-    return results
+    if len(results) == 0:
+        return False
+    elif len(results) != 0:
+        return True
 
 
-print(check_if_database_exists())
+""""""
+
+
+def load_database():
+    pass
+
+
+print(str(check_if_database_exists()))
