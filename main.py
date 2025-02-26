@@ -1,12 +1,13 @@
-import database_function
+import database_functions
 import general_functions
 
 while True:
     status = True
     try:
-        if database_function.check_if_database_exists():
+        if database_functions.check_if_database_exists():
             status = True
         else:
+            database_functions.create_DB()
             status = False
     except Exception as e:
         print("Error occurred:", e)

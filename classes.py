@@ -2,27 +2,29 @@ import sqlite3
 
 
 class Employyes:
-    def __init__(self, employye_code, first_name, last_name, phone_number, total_sales):
-        self.employye_code = employye_code
+    def __init__(
+        self, employee_code, first_name, last_name, phone_number, total_sales=0
+    ):
+        self.employee_code = employee_code
         self.first_name = first_name
         self.last_name = last_name
         self.phone_number = phone_number
         self.total_sales = total_sales
 
-    def save(self):
+    def savetoDB(self):
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute(
             """
-            INSERT OR REPLACE INTO employees (employye_code, first_name, last_name, phone_number, total_sales)
+            INSERT OR REPLACE INTO employees (employee_code, first_name, last_name, phone_number, total_sales)
             VALUES (?, ?, ?, ?, ?)
         """,
             (
-                self.employye_code,
+                str(self.employee_code),
                 self.first_name,
                 self.last_name,
                 self.phone_number,
-                self.total_sales,
+                str(self.total_sales),
             ),
         )
         conn.commit()
@@ -50,7 +52,7 @@ class Customer_Account:
         self.discount_amount = discount_amount
         self.debt_amount = debt_amount
 
-    def save(self):
+    def savetoDB(self):
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute(
@@ -80,7 +82,7 @@ class Product:
         self.product_price = product_price
         self.in_stock_amount = in_stock_amount
 
-    def save(self):
+    def savetoDB(self):
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute(
@@ -116,7 +118,7 @@ class Order:
         self.delivery_date = delivery_date
         self.total_orders = total_orders
 
-    def save(self):
+    def savetoDB(self):
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute(

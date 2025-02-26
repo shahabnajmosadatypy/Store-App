@@ -8,7 +8,17 @@ from os import system, name
 """import time for a little sleep"""
 from time import sleep
 
+"""import classes.py for object making"""
+from classes import *
+
+"""import random for code generation"""
+from random import randint
+
 """Clearing Screen function"""
+
+import database_functions
+
+database_functions.create_DB()
 
 
 def clear_screen():
@@ -59,13 +69,32 @@ def wizard_form_password():
         print("Error occurred:", e)
 
 
-def wizard_form_three():
-    print()
+def wizard_form_employee_info():
+    print("How many employees do you have? \n")
+    employee_count = int(input())
+    if employee_count > 0:
+        for i in range(1, employee_count + 1):
+
+            first_name = input(f"Please enter your employee number {i} first name: ")
+            last_name = input(f"Please enter your employee number {i} last name: ")
+            phone_number = input(
+                f"Please enter your employee number {i} phone number: "
+            )
+            employee_code = str(randint(1, 999))
+
+            employyes = Employyes(first_name, last_name, phone_number, employee_code)
+            employyes.savetoDB()
+            clear_screen()
+    else:
+        print("Hire employees")
 
 
-def wizard_form_four():
+def wizard_form_material_info():
     print()
 
 
 def login():
     pass
+
+
+wizard_form_employee_info()
