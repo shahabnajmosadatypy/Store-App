@@ -1,10 +1,10 @@
-import database_functions
+import database_function
 import general_functions
 
 while True:
     status = True
     try:
-        if database_functions.check_if_database_exists():
+        if database_function.check_if_database_exists():
             status = True
         else:
             status = False

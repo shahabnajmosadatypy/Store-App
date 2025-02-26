@@ -81,7 +81,6 @@ class Product:
         self.in_stock_amount = in_stock_amount
 
     def save(self):
-        # اتصال به پایگاه داده و ذخیره اطلاعات محصول
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute(
@@ -118,7 +117,6 @@ class Order:
         self.total_orders = total_orders
 
     def save(self):
-        # اتصال به پایگاه داده و ذخیره اطلاعات سفارش
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
         cursor.execute(
