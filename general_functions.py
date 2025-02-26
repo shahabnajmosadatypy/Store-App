@@ -16,10 +16,6 @@ from random import randint
 
 """Clearing Screen function"""
 
-import database_functions
-
-database_functions.create_DB()
-
 
 def clear_screen():
     if name == "nt":
@@ -28,10 +24,6 @@ def clear_screen():
     else:
         _ = system("clear")
         sleep(1)
-
-
-def set_password():
-    pass
 
 
 """Wizard form functions"""
@@ -53,24 +45,18 @@ def wizard_form_password():
             text_file.write(str(password))
 
     try:
-        if "y" in _:
+        if "y" in _.lower():
             password = str(input("Please enter your password: "))
             password_text_file(password)
             clear_screen()
-        elif "Y" in _:
-            password = str(input("Please enter your password: "))
-            password_text_file(password)
-            clear_screen()
-        elif "n" in _:
-            clear_screen()
-        elif "N" in _:
+        elif "n" in _.lower():
             clear_screen()
     except Exception as e:
         print("Error occurred:", e)
 
 
 def wizard_form_employee_info():
-    print("How many employees do you have? \n")
+    print("How many employees information you want to enter? \n")
     employee_count = int(input())
     if employee_count > 0:
         for i in range(1, employee_count + 1):
@@ -87,14 +73,37 @@ def wizard_form_employee_info():
             clear_screen()
     else:
         print("Hire employees")
+        clear_screen()
 
 
 def wizard_form_material_info():
-    print()
+    print("How many products do you want to enter? \n")
+    product_count = int(input())
+    if product_count > 0:
+        for i in range(1, product_count + 1):
+
+            product_code = input("Please enter your product code number: ")
+            product_name = input("Please enter your product name: ")
+            product_price = input("Please enter your product price: ")
+            in_stock_amount = str(input("Please enter your amount in stock: "))
+
+            products = Product(
+                product_code, product_name, product_price, in_stock_amount
+            )
+            products.savetoDB()
+            clear_screen()
+    else:
+        print("Error in entering product numbers, Please reload app")
+        clear_screen()
+
+
+def wizard_form_customer_info():
+    pass
+
+
+def home_page():
+    pass
 
 
 def login():
     pass
-
-
-wizard_form_employee_info()

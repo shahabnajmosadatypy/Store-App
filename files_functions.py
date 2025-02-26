@@ -1,25 +1,16 @@
-""" SQLite3 Custom
-This script allows to check if a Database exists
-Based on sqlite3 with using import sqlite3
+""" Files Functions
+This script allows to check in files
+Function are based on glob and sqlite3 
 """
 
 import sqlite3
 import glob
 
+"""Checking Functions to search for a Database"""
+
 
 def check_if_database_exists():
     """
-    # name = "*.db"
-    # path = os.getcwd()
-    # print(path)
-    # results = []
-    # for root, dirs, files in os.walk(path):
-    #     if name in files:
-    #         results.append(os.path.join(root, name))
-    # return results
-
-    Cause of not working os.walk(path)
-    I had to use glob
     Documention link is below :
     https://www.geeksforgeeks.org/file-searching-using-python/
 
@@ -44,9 +35,47 @@ def check_if_database_exists():
         return True
 
 
+"""Checking function to search for password file"""
+
+
+def check_if_pass_file_exists():
+    """
+    Documention link is below :
+    https://www.geeksforgeeks.org/file-searching-using-python/
+
+    """
+
+    """A list for files"""
+    results = []
+
+    """Define files"""
+
+    files = glob.glob("pass.txt")
+
+    """Searching in files whether a file extension is .db"""
+
+    for file in files:
+        results.append(file)
+
+    """Calling back the results of search"""
+    if len(results) == 0:
+        return False
+    elif len(results) != 0:
+        return True
+
+
+"""Creating Database for first time function"""
+
+
 def create_DB():
+    """Make a connection to sqlite3 database"""
     conn = sqlite3.connect("database.db")
+
+    """Make a cursor to sqlite3 database connection"""
     cur = conn.cursor()
+
+    """Creating tables for first time"""
+
     cur.execute(
         """
     CREATE TABLE IF NOT EXISTS employees (
@@ -72,6 +101,7 @@ def create_DB():
     )
 """
     )
+
     cur.execute(
         """
     CREATE TABLE IF NOT EXISTS products (
@@ -82,6 +112,7 @@ def create_DB():
     )
 """
     )
+
     cur.execute(
         """
     CREATE TABLE IF NOT EXISTS orders (
@@ -94,5 +125,9 @@ def create_DB():
     )
 """
     )
+
+    """Finialize changes"""
     conn.commit()
+
+    """Closing connection to database"""
     conn.close()
