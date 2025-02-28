@@ -12,7 +12,7 @@ while True:
         print("Error occurred:", e)
         break
     while status == True:
-        pass
+        general_functions.login()
     while status == False:
         print(
             "Hello dear user, any previous database not found on your system?\n",

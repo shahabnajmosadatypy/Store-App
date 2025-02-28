@@ -118,14 +118,71 @@ def wizard_form_customer_info():
     pass
 
 
+"""Documentation Links below:
+https://www.w3schools.com/python/python_strings.asp
+https://symbl.cc/en/unicode-table/"""
+
+
 def home_page():
-    text = ""
-    border = "─" * (len(text) + 2)
+    welcome_message = "Welcome to the administrator panel"
+    functions_list = "Available Functions:"
+    options = [
+        "1. Register an employee",
+        "2. Register a customer",
+        "3. Change an employee specifications",
+        "4. Change a customer specifications",
+        "5. Register a new product",
+        "6. Change product details",
+        "7. Register an order",
+        "8. Register a delivery",
+        "9. Analyze Sales and Customer Club",
+    ]
+    max_length = max(
+        len(welcome_message), len(functions_list), *(len(option) for option in options)
+    )
+    border = "─" * (max_length + 2)
+
     print(f"┌{border}┐")
-    print(f"│ {text} │")
-    print(f"│ {text} │")
-    print(f"│ {text} │")
+    print(f"│ {welcome_message.ljust(max_length)} │")
+    print(f"│ {functions_list.ljust(max_length)} │")
+    for option in options:
+        print(f"│ {option.ljust(max_length)} │")
     print(f"└{border}┘")
+    while True:
+        try:
+            selected_functions = int(input("Enter your function: "))
+            if selected_functions == 1:
+                register_employee()
+                break
+            elif selected_functions == 2:
+                register_customer()
+                break
+            elif selected_functions == 3:
+                change_employee()
+                break
+            elif selected_functions == 4:
+                change_customer()
+                break
+            elif selected_functions == 5:
+                register_product()
+                break
+            elif selected_functions == 6:
+                change_product()
+                break
+            elif selected_functions == 7:
+                register_order()
+                break
+            elif selected_functions == 8:
+                register_delivery()
+                break
+            elif selected_functions == 9:
+                analysis_club()
+                break
+            else:
+                clear_screen()
+                print("An error has occurred")
+        except:
+            print("Invalid input. Please enter a number.")
 
 
 def login():
@@ -142,4 +199,43 @@ def login():
         clear_screen()
 
 
-login()
+"""Adminstrator Functions Panel"""
+
+
+def register_employee():
+    pass
+
+
+def register_customer():
+    pass
+
+
+def change_employee():
+    pass
+
+
+def change_customer():
+    pass
+
+
+def register_product():
+    pass
+
+
+def change_product():
+    pass
+
+
+def register_order():
+    pass
+
+
+def register_delivery():
+    pass
+
+
+def analysis_club():
+    pass
+
+
+home_page()
