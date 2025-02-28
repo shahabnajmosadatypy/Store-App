@@ -55,6 +55,23 @@ def wizard_form_password():
         print("Error occurred:", e)
 
 
+def read_admin_password_login():
+    try:
+        with open("pass.txt", mode="r") as text_file:
+            correct_password = text_file.read().strip()
+        while True:
+            password = input("Enter your password: ")
+            if password == correct_password:
+                print("Welcome")
+                sleep(2)
+                clear_screen()
+                break
+            else:
+                print("Your password was incorrect. Try again.")
+    except:
+        print("An error has been occurred!")
+
+
 def wizard_form_employee_info():
     print("How many employees information you want to enter? \n")
     employee_count = int(input())
@@ -102,8 +119,27 @@ def wizard_form_customer_info():
 
 
 def home_page():
-    pass
+    text = ""
+    border = "─" * (len(text) + 2)
+    print(f"┌{border}┐")
+    print(f"│ {text} │")
+    print(f"│ {text} │")
+    print(f"│ {text} │")
+    print(f"└{border}┘")
 
 
 def login():
-    pass
+    print(
+        "Welcome\n",
+        "If you are adminstrator press 1 then press enter\n",
+        "If you are user press any key 2 then enter\n",
+    )
+    _ = str(input())
+    if _ == "1":
+        read_admin_password_login()
+        home_page()
+    else:
+        clear_screen()
+
+
+login()

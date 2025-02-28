@@ -72,11 +72,11 @@ def create_DB():
     conn = sqlite3.connect("database.db")
 
     """Make a cursor to sqlite3 database connection"""
-    cur = conn.cursor()
+    cursor = conn.cursor()
 
     """Creating tables for first time"""
 
-    cur.execute(
+    cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS employees (
         employee_code TEXT,
@@ -87,7 +87,7 @@ def create_DB():
     )
     """
     )
-    cur.execute(
+    cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS customer_accounts (
         user_name TEXT PRIMARY KEY,
@@ -102,7 +102,7 @@ def create_DB():
 """
     )
 
-    cur.execute(
+    cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS products (
         product_code TEXT PRIMARY KEY,
@@ -113,7 +113,7 @@ def create_DB():
 """
     )
 
-    cur.execute(
+    cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS orders (
         order_no INTEGER PRIMARY KEY,
@@ -131,3 +131,16 @@ def create_DB():
 
     """Closing connection to database"""
     conn.close()
+
+
+"""Read from database"""
+
+
+def readfromDB():
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM employees""")
+    result = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return result
