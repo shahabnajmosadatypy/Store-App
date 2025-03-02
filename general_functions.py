@@ -236,6 +236,7 @@ def register_employee():
     employee_code = str(input("Make a code for your employee: "))
     emp = Employees(employee_code, first_name, last_name, phone_number)
     emp.save_to_db()
+    print("Employee added successfully!")
     sleep(5)
     clear_screen()
     home_page()
@@ -269,6 +270,7 @@ def register_customer():
         debt_amount,
     )
     csm.save_to_db()
+    print("Customer added successfully!")
     sleep(5)
     clear_screen()
     home_page()
@@ -415,6 +417,7 @@ def register_product():
     in_stock_amount = str(input("Enter your product amount of stock"))
     pd = Product(product_code, product_name, product_price, in_stock_amount)
     pd.save_to_db()
+    print("Product added successfully!")
     sleep(5)
     clear_screen()
     home_page()
@@ -536,6 +539,9 @@ def register_delivery():
     sleep(5)
     clear_screen()
     home_page()
+
+
+"""Analysis Sales and Customer Club"""
 
 
 def analysis_club():

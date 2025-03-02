@@ -32,7 +32,7 @@ def main():
                     general_functions.wizard_form_material_info()
                     print("Wizard has been finished!")
                     general_functions.clear_screen()
-                    general_functions.home_page()
+                    general_functions.home_page("1")
                 elif "n" in wizard_var.lower():
                     general_functions.clear_screen()
                     break
