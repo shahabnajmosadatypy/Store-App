@@ -1,6 +1,8 @@
 import files_functions
 import general_functions
 
+"""Git Tutorial by Atryia Academy"""
+
 
 def main():
     while True:
