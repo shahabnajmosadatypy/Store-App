@@ -3,6 +3,8 @@ This script allows to check in files
 Function are based on glob and sqlite3 
 """
 
+"""SQLite3 documention : https://www.geeksforgeeks.org/python-sqlite/"""
+
 import sqlite3
 import glob
 
@@ -121,7 +123,7 @@ def create_DB():
         order_price REAL NOT NULL ,
         order_date TEXT NOT NULL,
         delivery_date TEXT NOT NULL,
-        total_orders INTEGER NOT NULL
+        is_delivered TEXT NOT NULL
     )
 """
     )
@@ -131,16 +133,3 @@ def create_DB():
 
     """Closing connection to database"""
     conn.close()
-
-
-"""Read from database"""
-
-
-def readfromDB():
-    conn = sqlite3.connect("database.db")
-    cursor = conn.cursor()
-    cursor.execute("""SELECT * FROM employees""")
-    result = cursor.fetchall()
-    conn.commit()
-    conn.close()
-    return result
